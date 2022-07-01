@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="js/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <p>{{msg2}}</p>
+        <p>{{msg2}}</p>
+        <p>{{msg2}}</p>
+    </div>
+    <script>
+        let vm = new Vue({
+            el: '#app',
+            data: {},
+            methods: {
+                msg1:function(){
+                    let res='abcdefg'.split('').reverse().join('');
+                    return res;
+                }
+            },
+            computed:{
+                // 由于msg2是属性，所以不用在使用的时候不用加上()
+                msg2:function(){
+                    let res='abcdefg'.split('').reverse().join('');
+                    return res;
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

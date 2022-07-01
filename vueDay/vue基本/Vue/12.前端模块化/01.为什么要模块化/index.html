@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+<!--
+    如果不使用模块化的缺点
+    1.全局变量出现很多同名变量，会出现覆盖的问题
+    2.如果使用匿名函数，复用性差
+    3.并且对顺序要求非常的强制，顺序不能出错
+
+    es5之前也可以使用导入导出
+    var moduleA=(function (){
+        let obj={}
+        obj.xxx 需要用到什么变量，就添加什么变量进去
+        return obj 导出
+    }()
+    moduleA.flag 导入
+
+-->
+</head>
+<body>
+<script src="aaa.js"></script>
+<script src="bbb.js"></script>
+<script src="mmm.js"></script>
+
+</body>
+</html>

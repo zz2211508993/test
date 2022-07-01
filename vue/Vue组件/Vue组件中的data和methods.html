@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="js/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <abc></abc>
+    </div>
+    <template id='myVue'>
+        <div>
+            <p>{{name}}---{{age}}</p>
+            <input type="button" @click='myFn' value='按钮'>
+        </div>
+    </template>
+    <script>
+
+        Vue.component('abc',{
+            template:'#myVue',
+            /*  
+                自定义组件中使用methods可以直接使用，
+                data必须是一个函数
+                并且要设置的数据，必须通过return {
+                    在这里面设置
+                }
+            */
+            methods:{
+                myFn:function(){
+                    console.log('aa');
+                }
+            },
+            data:function(){
+                return {
+                    name:'chen',
+                    age:21,
+                }
+            }
+        });
+        let vm = new Vue({
+            el: '#app',
+            data: {},
+            methods: {}
+        });
+    </script>
+</body>
+
+</html>

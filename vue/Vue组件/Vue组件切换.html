@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="js/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <input type="button" value='切换' @click='toggle()'>
+        <home v-if='isShow'></home>
+        <phote v-else></phote>
+
+    </div>
+    <template id='home'>
+        <div>
+            <p>我是首页</p>
+        </div>
+    </template>
+    <template id='phote'>
+        <div>
+            <img src='../images/Aurora-1080.jpg'>
+        </div>
+    </template>
+    <script>
+
+        Vue.component('home',{
+            template:'#home',
+            data:function(){
+                return {
+                    
+                }
+            },
+            
+        });
+        Vue.component('phote',{
+            template:'#phote',
+            data:function(){
+                return {
+                }
+            }
+
+        });
+
+        let vm = new Vue({
+            el: '#app',
+            data: {
+                isShow:true,
+            },
+            methods: {
+                toggle:function(){
+                    this.isShow=!this.isShow;
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

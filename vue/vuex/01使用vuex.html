@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="js/vue.js"></script>
+    <!-- 1.vuex要写在vue.js之后 -->
+    <script src='js/vuex.js'> </script>
+</head>
+
+<body>
+    <div id="app1">
+        <father>
+            
+        </father>
+    </div>
+    <template id='father'>
+            <div>
+                <son1>
+                </son1>
+                <son2>
+
+                </son2>
+            </div>       
+    </template>
+    <template id='son1'>
+        <div>
+            <p>{{this.$store.state.name}}</p>
+        </div>
+
+    </template>
+    <template id='son2'>
+        <div>
+            <p>{{this.$store.state.name}}</p>
+        </div>
+
+    </template>
+    <script>
+        // Vue.component('abc',{
+        //     template:'#myVue',
+        // });
+        const store = new Vuex.Store({
+        state: {
+           name:'chen',
+        },
+    })
+    // Vue.component("grandfather", {
+    //     template: "#grandfather",
+    //     // 3.在祖先组件中添加store的key保存Vuex对象
+    //     // 只要祖先组件中保存了Vuex对象 , 那么祖先组件和所有的后代组件就可以使用Vuex中保存的共享数据了
+    //     store: store,
+    //     // 爸爸组件
+    //     components: {
+    //         "father": {
+    //             template: "#father",
+    //             // 儿子组件
+    //             components: {
+    //                 "son": {
+    //                     template: "#son",
+    //                 }
+    //             }
+    //         }
+    //     }
+    // });
+        let vue = new Vue({
+        el: '#app1',
+        // 这里就是MVVM中的Model
+        data: {
+        },
+        // 专门用于存储监听事件回调函数
+        methods: {
+        },
+        // 专门用于定义计算属性的
+        computed: {
+        },
+        components: {
+            "father": {
+            'template': "#father",
+             store: store,
+                // 儿子组件
+                components: {
+                    "son1": {
+                        'template': "#son1",
+                    },
+                    "son2": {
+                        'template': "#son2",
+                    }
+                }
+            }
+        }
+    });
+    </script>
+</body>
+
+</html>

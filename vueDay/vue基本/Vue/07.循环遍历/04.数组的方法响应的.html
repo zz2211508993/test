@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<!--
+  1.push
+  最后面添加数据
+  2.pop
+  删除最后一个
+  3.unshift
+  在最前面添数据
+  4.shift
+  删除最前面的数据
+  5.splice 增 删 替
+        splice
+        * 第一个参数 从哪里开始
+        * 删除元素 第二个参数 不传代表删除所有
+        * 新增元素 第二个参数 传第几个代表在第几个新增,后面的元素是替换前面的
+        * 插入元素 第二参数 传0, 后面是插入的数值
+        */
+  6.sort
+  排序
+  7.reverse
+  反转
+  在vue中不能通过设置索引，响应式
+  要通过 vue中的set
+-->
+<div id="app">
+  <ul>
+    <li v-for="item in arr">
+        {{item}}
+    </li>
+  </ul>
+  <button @click="btnClick"> 按钮</button>
+</div>
+<script src="../js/vue.js"></script>
+
+<script>
+  let vm=new Vue({
+    el:'#app',
+    data:{
+      message:'123',
+      arr:['d','b','c','a']
+    },
+    methods:{
+      btnClick(){
+        // this.arr.push('123');
+        // this.arr.pop()
+        // this.arr.shift('ddd');
+        /*
+        splice
+        * 第一个参数 从哪里开始
+        * 删除元素 第二个参数 不传代表删除所有
+        * 新增元素 第二个参数 传第几个代表在第几个新增,后面的元素是替换前面的
+        * 插入元素 第二参数 传0, 后面是插入的数值
+        */
+        // this.arr.sort();
+        // this.arr.reverse();
+        this.arr.splice(0,0,'123');
+
+        // Vue.set(this.arr,0,'123')
+
+      }
+
+
+
+    }
+
+  })
+
+</script>
+
+</body>
+</html>

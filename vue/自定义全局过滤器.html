@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="js/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <p>{{name | msg | msg1}}</p>
+    </div>
+    <script>
+        /* 
+            过滤器接收两个参数
+            第一个参数:过滤器名称
+            第二个参数:处理数据的函数
+            默认情况下:处理数据的函数需要接收一个参数，就是被处理的数据
+            过滤器 可以连续使用
+        */
+        Vue.filter('msg', function (value) {
+            value=value.replace(/学院/g,"大学");
+            return value;
+        })
+        Vue.filter('msg1', function (value) {
+            value=value.replace(/大学/g,"幼儿园");
+            return value;
+        })
+        let vm = new Vue({
+            el: '#app',
+            data: {
+                name:'a学院 b学院 c学院 d学院',
+            },
+            methods: {}
+            
+        });
+    </script>
+</body>
+
+</html>

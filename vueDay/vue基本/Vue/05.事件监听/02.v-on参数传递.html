@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<!--
+    v-on传递参数
+    1.v-on可以传递参数，也可以不传递
+   <button @click="btn1Click()"> 按钮1</button>
+   <button @click="btn2Click"> 按钮2</button>
+   2.v-on 不传递参数，默认有一个浏览器的event对象
+   <button @click="btn3Click"> 按钮3</button>
+   如果手动直接写event 就会获取不到,必须通过$event
+   <button @click="btn4Click(123,event)"> 按钮4</button>
+   3.v-on 传递参数，如何有默认的参数和传递进去的参数,手动获取event对象需要，通过$event
+
+-->
+<div id="app">
+  <button @click="btn1Click()"> 按钮1</button>
+  <button @click="btn2Click"> 按钮2</button>
+  <button @click="btn3Click"> 按钮3</button>
+  <button @click="btn4Click(123,event)"> 按钮4</button>
+</div>
+<script src="../js/vue.js"></script>
+<script>
+  let vm=new Vue({
+    el:'#app',
+    data:{
+      message:'123',
+    },
+    methods:{
+      btn1Click(){
+        console.log('btn1CliCK')
+      },
+      btn2Click(){
+        console.log('btn2CliCK')
+      },
+      btn3Click(abc){
+        console.log(abc);
+      },
+      btn4Click(abc,event){
+        console.log(abc,event)
+      }
+    }
+  })
+</script>
+
+</body>
+</html>

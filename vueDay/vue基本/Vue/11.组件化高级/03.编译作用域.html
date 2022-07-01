@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<!--
+    编译作用域
+    1.在父组件的模板中，使用的数据都是父组件的数据
+    <cpn v-show="isShow"></cpn> 使用的还是vue实例中的data中的数据
+    2.在子组件中模板中，使用的数据都是子组件的数据
+    <button v-show="isShow">11212</button> 这个是在子组件中写的，是获取子组件中的data
+-->
+<div id="app">
+  <cpn v-show="isShow"></cpn>
+  {{isShow}}
+</div>
+<template id="cpn">
+  <div>
+    <p>p</p>
+    <h2>h2</h2>
+    <button v-show="isShow">11212</button>
+    {{isShow}}
+  </div>
+</template>
+<script src="../js/vue.js"></script>
+<script>
+  let vm=new Vue({
+    el:'#app',
+    data(){
+      return {
+        isShow:true,
+      }
+    },
+    components:{
+      'cpn':{
+        template:'#cpn',
+        data(){
+          return {
+            isShow:false
+          }
+        }
+      }
+    }
+  })
+</script>
+</body>
+</html>

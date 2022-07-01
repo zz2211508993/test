@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<!--
+    1.如果是data是对象，相当于都指向了0x100的内存地址，也就是指向了这个data:{}，data后面的对象
+    那么会出现数据混乱,比如说你第一次使用了cpn这个组件，点击了加1，后面第二次第三次使用这个cpn组件，中的count都是1
+    2.如果data是函数，相当一第一次调用的指向第一个0x100修改了也是0x100中的数据，第二次调用的指向0x200以此类推
+    如果是函数就不会这样，每次都返回一个新的对象，所以不会导致数据混乱
+
+-->
+<div id="app">
+  <cpn></cpn>
+  <cpn></cpn>
+</div>
+<template id="timer">
+  <div>
+    <h2>当前计数:{{count}}</h2>
+    <button @click="add">增加</button>
+    <button @click="sub">减少</button>
+  </div>
+
+</template>
+<script src="../js/vue.js"></script>
+<script>
+  const obj={
+    count:0,
+  }
+  let vm=new Vue({
+    el:'#app',
+    data:{
+      message:'123',
+    },
+    components:{
+      'cpn':{
+        template:"#timer",
+        data(){
+          return {
+              count:0
+          }
+          // return obj 这样写相当于 data:{} 会出现数据混乱，指向同一个内存地址（0x100）
+        },
+        methods:{
+          add() {
+            this.count++;
+          },
+          sub() {
+            this.count--;
+            if (this.count < 0) {
+              this.count = 0;
+            }
+          },
+        }
+      }
+    }
+  })
+</script>
+</body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<div id="app">
+  <son :number1="num1" :number2="num2" @change1="change1" @change2="change2"></son>
+</div>
+<template id="son">
+    <div>
+      <h2>props:{{number1}}</h2>
+      <h2>data:{{number1}}</h2>
+<!--      <input type="text" :value="number1" @input="num1input">-->
+      <input type="text" v-model="num1">
+      <h2>props:{{number2}}</h2>
+      <h2>data:{{number2}}</h2>
+<!--      <input type="text" :value="number2" @input="num2input">-->
+      <input type="text" v-model="num2">
+    </div>
+</template>
+<script src="../js/vue.js"></script>
+<script>
+  let vm=new Vue({
+    el:'#app',
+    data:{
+      num1:1,
+      num2:0,
+    },
+    methods:{
+      change1(num){
+        this.num1=Number(num);
+      },
+      change2(num){
+        this.num2=Number(num);
+      }
+    },
+    components:{
+      'son':{
+        template:'#son',
+        props:{
+          number1:Number,
+          number2:Number,
+        },
+        data(){
+          return {
+            num1:this.number1,
+            num2:this.number2,
+          }
+        },
+        watch:{
+          num1(newValue){
+            this.num2= newValue*100;
+            this.$emit('change2',this.num2)
+
+          },
+          num2(newValue){
+            this.num1= newValue/100;
+            console.log(newValue)
+            this.$emit('change1',this.num1)
+          }
+        }
+      }
+    }
+
+  })
+</script>
+</body>
+</html>

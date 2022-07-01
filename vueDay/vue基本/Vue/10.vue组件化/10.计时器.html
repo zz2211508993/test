@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<div id="app">
+  <cpn @item-click="cpnClick"></cpn>
+  <h2>{{count}}</h2>
+</div>
+<template id="my-cpn">
+  <div>
+    <button @click="addClick">增加</button>
+    <button @click="subClick">减少</button>
+  </div>
+</template>
+<script src="../js/vue.js"></script>
+<script>
+  let vm=new Vue({
+    el:'#app',
+    data(){
+      return {
+        count:0,
+      }
+    },
+    components:{
+      'cpn':{
+        template:'#my-cpn',
+        data(){
+          return {
+            count:0,
+          }
+        },
+        methods:{
+          addClick(){
+            this.count++;
+            this.$emit('item-click',this.count)
+          },
+          subClick(){
+            this.count--;
+            if(this.count<=0){
+              this.count=0;
+            }
+            this.$emit('item-click',this.count)
+          }
+        }
+      },
+
+    },
+    methods: {
+      cpnClick(item){
+        this.count=item;
+      }
+    }
+  })
+</script>
+</body>
+</html>

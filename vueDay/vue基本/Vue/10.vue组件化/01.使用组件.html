@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<div id="app">
+  <my-cpn></my-cpn>
+</div>
+<script src="../js/vue.js"></script>
+<script>
+  // 1.创建组件构造器
+  const cpn=Vue.extend({
+    template:
+        `
+        <div>
+            <p>我是p1</p>
+            <h2>我是h2</h2>
+        </div>
+        `
+  })
+  //2.注册组件
+  // Vue.component('需要使用的标签名')
+  Vue.component("my-cpn",cpn)
+  const vm=new Vue({
+    el:'#app',
+    data:{
+      message:'123',
+    }
+  })
+</script>
+
+</body>
+</html>

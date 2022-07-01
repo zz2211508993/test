@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="js/vue.js"></script>
+</head>
+
+<body>
+    <div id="app" >
+        <input type="button" @click='focus' value='点击按钮'>
+        <p ref="child">我是元素</p>
+        <one ref='child2'></one>
+    </div>
+    <template id='one'>
+        <div>
+            <p>我是组件</p>
+        </div>
+    </template>
+    <script>
+        let vm = new Vue({
+            el: '#app',
+            data: {
+                
+            },
+            methods: {
+                focus: function () {
+                    /* 
+                        在Vue中虽然可以通过原生js的document.query()获取元素，但是不推荐
+                        在Vue中获取元素可以通过，ref属性
+                        在Vue实例中通过this.$refs
+                        1.获取的是原生的元素，那么就返回原生元素
+                        2.如果获取的是组件，那么返回的就是组件
+
+                    */
+
+                    console.log(document.querySelector('p'));
+                    console.log(document.querySelector('#one'))
+                    console.log(this.$refs.child);
+                    console.log(this.$refs.child2);
+                }
+            },
+            components:{
+                'one':{
+                    'template':'#one',
+                }
+                    
+            }
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<!--
+    父组件访问子组件的几种方式
+    1.$children 会访问到所有的子组件 不推荐使用，是用下标区的数据新增下标就不一样了
+    2.refs 会访问到标签设置了ref属性的子组件 推荐使用，是按名字区的很方便
+
+
+-->
+<div id="app">
+  <cpn ref='aaaa'></cpn>
+  <cpn></cpn>
+  <cpn></cpn>
+    <button @click="cpnClick">访问子组件</button>
+
+</div>
+  <template id="cpn">
+    <div>
+      <p>2</p>
+      <h2>h2</h2>
+    </div>
+  </template>
+  <script src="../js/vue.js"></script>
+  <script>
+    let vm=new Vue({
+      el:'#app',
+      data(){
+        return {
+
+        }
+      },
+      methods:{
+        cpnClick(){
+            // for(let item of this.$children){
+            //   console.log('aaa')
+            //   console.log(item.name);
+            // }
+          console.log(this.$refs.aaaa);
+        }
+      },
+      components:{
+        'cpn':{
+          template:'#cpn',
+          data(){
+            return {
+              name:'chen'
+            }
+          }
+        }
+      }
+    })
+</script>
+</body>
+</html>

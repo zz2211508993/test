@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+         *{
+            margin: 0;
+            padding: 0;
+        }
+        #app{
+            width: 800px;
+            margin: 50px auto;
+            background: skyblue;
+        }
+        table{
+            width: 100%;
+            background: #000;
+        }
+        table tr{
+            background-color: white;
+        }
+        form{
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+        }
+    </style>
+    <script src="js/vue.js"></script>
+
+</head>
+
+<body>
+    <div id="app">
+        <form action="#" v-show='isShow'>
+            <input type="text" placeholder="请输入序列" v-model="person.id">
+            <input type="text" placeholder="请输入名称" v-model="person.name">
+            <input type="text" placeholder="请输入成绩" v-model="person.score">
+            <input type="submit" value='新增' @click.prevent='add'>
+            <input type="submit" value='查询' @click.prevent='query(person)'>
+        </form>
+        <table v-for="">
+            <tr>
+                <th>序号</th>
+                <th>姓名</th>
+                <th>分数</th>
+                <th>时间</th>
+                <th>操作</th>
+            </tr>
+            <tr v-for="(person,index) in persons">
+                <td><input type="text" :value="person.id" :disabled="isDisabled"></td>
+                <td><input type="text" :value="person.name" :disabled="isDisabled"></td>
+                <td><input type="text" :value="person.score" :disabled="isDisabled"></td>
+                <td><input type="text" :value="person.time | forMateDate" disabled></td>
+                <td>
+                    <a href="#" @click.prevent='edit'>编辑</a>
+                    <a href="#" @click.prevent='del(index)'>删除</a>
+                    <br>
+                    <a href="#" @click.prevent="operation">更多操作</a>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <script>
+        Vue.filter('forMateDate', function () {
+            let date=new Date();
+            let year=date.getFullYear()+"";
+            let month=date.getMonth() + 1 +"";
+            let day=date.getDate()+"";
+            let hour=date.getHours()+"";
+            let minute=date.getMinutes()+"";
+            let second=date.getSeconds()+"";
+            let res=`${year.padStart(2,"0")}/${month.padStart(2,"0")}/${day.padStart(2,"0")} ${hour.padStart(2,"0")}:${minute.padStart(2,"0")}:${second.padStart(2,"0")}`;
+            return res;
+        })
+        let vm = new Vue({
+            el: '#app',
+            data: {
+                isShow:false,
+                isDisabled:true,
+                persons:[
+                    {
+                        id:1,
+                        name:'zs',
+                        score:'99',
+                        time:Date.now(), 
+                    },
+                    {
+                        id:2,
+                        name:'ls',
+                        score:'88',
+                        time:Date.now(), 
+                    },
+                    {
+                        id:3,
+                        name:'ww',
+                        score:'88',
+                        time:Date.now(), 
+                    },
+                ],
+                
+                person:{
+                    id:'',
+                    name:'',
+                    score:'',
+
+                }
+            },
+            methods: {
+                edit:function(){
+                    this.isDisabled=!this.isDisabled;
+                },
+                operation:function(){
+                    this.isShow=!this.isShow;
+                },
+                del:function(index){
+                    // 删除点击的
+                   this.persons.splice(index,1)
+                },
+                add:function(){
+                    // 给新增的添加时间
+                    this.person.time=Date.now();
+                    // 将新增的添加到persons中
+                    this.persons.push(this.person)
+                    // 清空添加之前的
+                    this.person={
+                    id:'',
+                    name:'',
+                    score:'',
+
+                    }
+                },
+                query:function(score){
+                    let newPerson=this.persons.filter((person)=>{
+                        if(this.person.score===person.score){
+                            return true;
+                        }
+                    })
+                    // 页面发生改变，model也会改变
+                    this.persons=newPerson;
+                
+                }
+                
+            }
+        })
+    </script>
+</body>
+
+</html>

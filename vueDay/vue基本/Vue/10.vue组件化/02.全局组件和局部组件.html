@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<!--
+    1.通过Vue.component('cpn1',cpn1)注册组件，是全局组件
+    2.通过 components:{
+      'cpn1':cpn1
+    }注册组件,是局部组件
+
+-->
+<div id="app">
+    <cpn1></cpn1>
+</div>
+<div id="app1">
+  <cpn1></cpn1>
+</div>
+<script src="../js/vue.js"></script>
+<script>
+  const cpn1=Vue.extend({
+    template:
+        `
+          <div>
+              <p>我是p标签</p>
+              <h2>我是h2标签</h2>
+          </div>
+        `
+  })
+  // Vue.component('cpn1',cpn1);
+
+
+  const vm=new Vue({
+    el:'#app',
+    data:{
+      message:'123',
+    },
+    components:{
+      'cpn1':cpn1
+    }
+  })
+  const vm1=new Vue({
+    el:'#app1',
+    data:{
+      message:'123',
+    },
+  })
+</script>
+
+</body>
+</html>

@@ -1,0 +1,38 @@
+##### 1.创建一个空的对象，并且设置空的对象的原型为传入进来的函数
+
+```
+const obj = Object.create(func.prototype);
+```
+
+##### 2.new构造函数的时候执行，并且指定this
+
+```
+func.call(obj,...args)
+```
+
+##### 3.返回对象
+
+```
+return obj
+```
+
+
+
+完整代码
+
+```
+// func是构造函数，...args是需要传给构造函数的参数
+function myNew(func, ...args) {
+  const obj = Object.create(func.prototype);
+  func.call(obj, ...args);
+  return obj;
+}
+function Test(name, age) {
+  this.name = name;
+  this.age = age;
+}
+const mynew = myNew(Test, "小明", 18);
+
+console.log(mynew, "123");
+```
+

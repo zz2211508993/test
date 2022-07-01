@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="js/vue.js"></script>
+    <script src='js/vue-router.js'></script>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .onepage, .twopage{
+            width: 500px;
+            height: 500px;
+        }
+        .onepage{
+            background: pink;
+        }
+        .twopage{
+            background: skyblue;
+        }
+        .router-link-active{
+            background-color: pink; 
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 
+        方式一: 通过URL参数参数(?key=value&key=value), 通过this.$route.query获取
+        方式二: 通过占位符传递(路由规则中/:key/:key, 路径中/value/value), 通过this.$route.params获取 
+    -->
+    <div id="app">
+        <router-link to='/one?name=lnj&age=22' tag='button'>第一个网页</router-link>
+        <router-link to='/two/lnj/18' tag='button'>第二个网页</router-link>
+        <router-view></router-view>
+    </div>
+    <template id='one'>
+        <div class="onepage">
+            <p>我是第一个界面</p>
+        </div>
+    </template>
+    <template id='two'>
+        <div class="twopage">
+            <p>我是第二个界面</p>
+        </div>
+    </template>
+    <script>
+        // 1.定义组件
+        const one={
+            template: "#one",
+            created: function () {
+                console.log(this.$route.query);
+            }
+        }
+        const two={
+            template: "#two",
+            created: function () {
+                console.log(this.$route.params);
+            }
+        }
+        // 2定义切换的规则(定义路由的规则)
+        const routes = [
+            { path: '/one', component: one },
+            { path: '/two/:name/:age', component: two }
+        ]
+        // 3.根据自定义的规则创建路由对象
+        const router = new VueRouter({
+            routes:routes,
+            linkActiveClass:'nj-active',
+        })
+        let vm = new Vue({
+            el: '#app',
+            // 4.将创建好的路由对象绑定到Vue实例上
+            router:router,
+            data: {},
+            methods: {},
+            components: {
+                one: one, //相当于 template:'#one';
+                two: two //相当于 template:'#two';
+            }
+        });
+    </script>
+</body>
+
+</html>

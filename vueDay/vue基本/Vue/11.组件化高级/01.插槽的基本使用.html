@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<!--
+    组件抽取共同的
+    插槽设置为插槽 也就是导航栏结构一样，但是里面的左边中间右边又不一样，所以需要使用插槽
+    一旦设置了插槽，可以让使用者根据需求，来决定插槽插入什么内容
+    1.插槽的使用
+    <cpn>插槽</cpn>
+    插槽的默认值在slot中写标签
+    <template>
+    <slot>默认值</slot>
+    </template>
+
+-->
+<div id="app">
+  <cpn></cpn>
+  <cpn><span>123</span></cpn>
+  <cpn><i>123</i></cpn>
+  <cpn></cpn>
+</div>
+<template id="cpn">
+  <div>
+    <h2>我是组件</h2>
+    <p>我是组件，哈哈哈</p>
+    <p>哈哈哈</p>
+    <slot><button>按钮</button></slot>
+  </div>
+</template>
+<script src="../js/vue.js"></script>
+<script>
+  let vm=new Vue({
+    el:'#app',
+    data:{
+    },
+    components:{
+      'cpn':{
+        template:'#cpn'
+      }
+    }
+  })
+</script>
+
+</body>
+</html>

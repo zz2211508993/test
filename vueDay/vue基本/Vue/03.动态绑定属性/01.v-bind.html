@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style>
+    .active{
+      color:red;
+    }
+  </style>
+</head>
+
+<body>
+<div id="app">
+<!--
+  1.v-bind 普通写法就是:class=变量 或者字符串
+    <h2 :class="active">我是H2</h2>
+  2.v-bind对象写法
+    <h2 :class="{'active':false,'link':false,}">我是H2</h2>
+    还可以直接使用data中的变量
+    <h2 :class="{active:active,link:link,}">我是H2</h2>
+    如果觉得写的太长了，可以使用methods/computed 计算属性不需要加()
+    <h2 :class="getClass()">我是H2</h2>
+  3.v-bind数组写法
+    <h2 :class=['active','link']>我是H2</h2>
+    还可以直接使用data中的变量
+    <h2 :class=[active,link]>我是H2</h2>
+
+-->
+
+<!--    <h2 :class="{'active':false,'link':false,}">我是H2</h2>-->
+<!--  <h2 :class="{active:active,link:link}">我是H2</h2>-->
+<!--  methods写法 <h2 :class="getClass()">我是H2</h2>-->
+<!--  computed 写法 <h2 :class="getClass">我是H2</h2>-->
+<!--  <h2 :class=['active','link']>我是H2</h2>-->
+<!--  <h2 :class=['active','link']>我是H2</h2>-->
+<!--  <h2 :class=obj>我是H2</h2>-->
+
+<!--  <h2 :class='[active,{active:true}]'>我是H2</h2>-->
+  <h2 :class="['active',flag ? 'active' : 'link']">我是H2</h2>
+
+
+
+</div>
+<script src="../js/vue.js"></script>
+<script>
+  let vm=new Vue({
+    el:'#app',
+    data:{
+      message:'123',
+      active:'active',
+      link:'link',
+      flag:true,
+      obj:{
+        active:'active',
+        link:'link',
+      }
+    },
+    methods: {
+      // getClass(){
+      //   return this.active +' '+ this.link;
+      // },
+    },
+    computed:{
+      getClass(){
+        return this.active +' '+ this.link;
+      },
+    }
+  })
+</script>
+</body>
+</html>

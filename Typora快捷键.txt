@@ -1,0 +1,9 @@
+ctrl + 1-6 1级-6级标题
+ctrl + shift + k 代码块
+ctrl + shift + l  显示侧边栏
+ctrl + B 加粗
+ctrl + l 倾斜
+ctrl + u 下划线
+ctrl + shift + ` 代码
+ctrl + shift + [  有序
+ctrl + shift + ]  无序

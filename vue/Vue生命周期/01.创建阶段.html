@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="js/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <p>{{name}}</p>
+    </div>
+    <script>
+        let vm = new Vue({
+            beforeCreate:function(){
+                /* 
+                    beforeCreate方法调用时 
+                    此时还没有data数据和methods方法
+                */
+                // console.log(this.name)
+                // console.log(this.say);
+                
+            },
+            created:function(){
+                /* 
+                    created方法调用时 
+                    此时已经有data和methods，还没有模板
+                */
+                console.log(this.name)
+                console.log(this.say);
+            },
+            beforeMount:function(){
+                /* 
+                    beforeMount方法调用时 
+                    此时已经有模板了，只是还没有在界面上渲染
+                */
+                console.log(document.querySelector('p').innerHTML);
+                console.log(document.querySelector('p').innerText)
+
+            },
+            mounted:function(){
+                /* 
+                    mounted方法调用时 
+                    此时已经完成了最终的渲染
+                */
+                console.log(document.querySelector('p').innerHTML);
+                console.log(document.querySelector('p').innerText)
+            },
+            el: '#app',
+            data: {
+                name:'chen',
+                age:18,
+            },
+            methods: {
+                say:function(){
+                    console.log('aaa');
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

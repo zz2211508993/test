@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatinle" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<nody>
+    <script>
+        var num=6;
+        function a(num){
+            if(num<=1){
+                return 1;
+            }
+            return num * a(num-1); 
+            //6 (num5(1))
+        }
+        var b=a(num);
+        console.log(b);
+        // {120
+        //     {
+        //         {
+        //             {
+        //                 {
+        //                     {
+
+        //                     }
+        //                 }
+        //             }
+        //         }
+        //     }
+        // }
+    </script>
+    
+</nody>
+</html>

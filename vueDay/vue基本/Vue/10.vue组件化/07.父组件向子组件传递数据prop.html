@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<!--
+    props 接收父组件传递过来的数据，可以是数组/对象
+    数组写法 props:['自定义接收的名称','自定义接收的名称']
+    对象写法:
+    参数
+    type 指定传递过来的类型
+    default 默认值 如果是对象/数组 需要将default设置为函数 并且return 对象或者数组
+    required为true 必须传值，否则报错
+    props:{
+       parentmessage:{
+       type:String,
+       default:默认值
+       required 是否必须传递值，true就必须
+    },
+
+
+-->
+<div id="app">
+  <my-cpn :parentmessage="message" ></my-cpn>
+</div>
+<template id="mycpn">
+  <div>
+    <h2>{{parentmessage}}</h2>
+    <p>{{parentmovies}}</p>
+  </div>
+</template>
+<script src="../js/vue.js"></script>
+<script>
+  let vm=new Vue({
+    el:'#app',
+    data(){
+      return{
+        message:'123',
+        movies:['海王','海尔兄弟','阿甘正传','午夜凶铃']
+      }
+    },
+    components:{
+      'my-cpn':{
+        template:'#mycpn',
+        props:{
+            parentmessage:{
+              type:String,
+            },
+            parentmovies:{
+              type:Array,
+              default(){
+                return []
+              },
+              required:true
+            }
+        },
+      }
+    }
+  })
+</script>
+
+</body>
+</html>

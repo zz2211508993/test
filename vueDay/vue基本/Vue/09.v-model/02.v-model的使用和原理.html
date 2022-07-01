@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<!--
+
+  <input type="text" v-model='message'>
+  等同于
+  <input type="text" :value="message" @input="message=$event.target.value">
+
+
+
+-->
+<div id="app">
+  <input type="text" :value="message" @input="message=$event.target.value">
+  <h2>{{message}}</h2>
+</div>
+<script src="../js/vue.js"></script>
+<script>
+  let vm=new Vue({
+    el:'#app',
+    data:{
+      message:'123',
+    },
+    methods:{
+      // setValue(e){
+      //   this.message=e.target.value;
+      // }
+    }
+  })
+</script>
+
+</body>
+</html>

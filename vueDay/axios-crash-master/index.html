@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .active{
+            color:red;
+        }
+    </style>
+    <script src="js/vue.js"></script>
+    <script src="js/vue-router.js"></script>
+</head>
+<body>
+<div id="app">
+    <router-link to='/user/foo'>第一个网页</router-link>
+<!--    <router-link to='/user/foo/profile'>第一个网页</router-link>-->
+<!--    <router-link to='/user/foo/posts'>第一个网页</router-link>-->
+<!--    <router-link to='/user/foo/profile'>第一个网页</router-link>-->
+    <router-view></router-view>
+</div>
+<ul>
+    <li class="item active">1</li>
+    <li class="item">2</li>
+    <li class="item">3</li>
+    <li class="item">4</li>
+    <li class="item">5</li>
+</ul>
+
+<script>
+    // window.onload=function (){
+    //     let items=document.querySelectorAll('ul>li');
+    //     let previousIndex=0;
+    //     for(let i=0;i<items.length;i++){
+    //         let item=items[i];
+    //         item.setAttribute('ref','child'+(i+1))
+    //         item.onclick=function (){
+    //             let previousItem = items[previousIndex];
+    //             previousItem.className='item'
+    //             this.className=this.className +' active'
+    //             previousIndex=i;
+    //         }
+    //     }
+    // }
+    const User={
+        template:
+            `
+              <div class="user">
+              {{$route.params}}
+              <router-view></router-view>
+            </div>
+            `
+    }
+    const routes = [
+        {
+            path:'/user/:id',
+            component: User,
+        }
+    ]
+
+    const router = new VueRouter({
+        routes
+    })
+    let vm=new Vue({
+        el:'#app',
+        data(){
+            return {
+            }
+        },
+        router:router,
+    })
+
+</script>
+
+</body>
+</html>

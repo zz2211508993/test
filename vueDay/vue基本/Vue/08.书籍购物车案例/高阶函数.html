@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<!--
+  高阶函数
+  filter 过滤
+  map 映射(遍历)数组 和forEach 不一样map有返回值
+  reduce 对数组中所有的内容进行汇总,有上一次的值
+-->
+<div id="app">
+
+  <ul>
+    <li v-for="item in arr">
+      {{item}}
+    </li>
+    <li>
+      {{newNum}}
+    </li>
+  </ul>
+    <button @click="btn1Click">按钮</button>
+</div>
+<script src="../js/vue.js"></script>
+<script>
+  let vm=new Vue({
+    el:'#app',
+    data:{
+      message:'123',
+      arr:[10,20,40,100,222,333],
+      num:[],
+      newNum:null,
+    },
+    methods:{
+      btn1Click() {
+        for(let i=0;i<this.arr.length;i++){
+            if(this.arr[i]<=100){
+              this.num.push(this.arr[i])
+            }
+        }
+        for(let j=0;j<this.num.length;j++){
+            this.newNum=this.num[j]*2;
+        }
+      }
+    }
+  })
+</script>
+
+</body>
+</html>

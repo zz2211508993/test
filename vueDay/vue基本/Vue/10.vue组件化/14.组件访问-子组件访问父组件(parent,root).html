@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<!--
+    子组件访问访问组件的几种方式
+    1.$parent 会访问到当前的父组件
+    2.￥root 会访问到当前组件的根组件，也就是vue实例
+
+
+-->
+<div id="app">
+  <cpn></cpn>
+</div>
+<template id="cpn">
+    <ccpn></ccpn>
+</template>
+<template id="ccpn">
+  <div>
+    <p>p</p>
+    <h2>h2</h2>
+    <button @click="cpnClick">按钮</button>
+  </div>
+
+</template>
+<script src="../js/vue.js"></script>
+<script>
+  let vm=new Vue({
+    el:'#app',
+    data(){
+      return {
+
+      }
+    },
+    methods:{
+    },
+    components:{
+      cpn:{
+        template:'#cpn',
+        data(){
+          return {
+            name:'chen'
+          }
+        },
+        methods:{
+
+        },
+        components: {
+          'ccpn':{
+            template:'#ccpn',
+            methods:{
+              cpnClick(){
+                console.log(this.$parent)
+                console.log(this.$root)
+              }
+            }
+          }
+        }
+      },
+
+    }
+  })
+</script>
+</body>
+</html>

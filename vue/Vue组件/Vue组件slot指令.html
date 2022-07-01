@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="js/vue.js"></script>
+</head>
+
+<body>
+
+    <div id="app1">
+    </div>
+    <div id="app2">
+        <father>
+            <div>assaa</div>
+        </father>
+    </div>
+    <template id='father'>
+            <div>
+                <son>
+                    <template #one>
+                        <p>aaa</p>
+                        <p>bbb</p>
+                    </template>
+                    <template #two>
+                        <p>aaa</p>
+                        <p>bbb</p>
+                    </template>
+                </son>
+            </div>       
+    </template>
+    <template id='son'>
+        <div>
+            <slot name='one'>匿名插槽</slot>
+            <slot name='two'>匿名插槽</slot>
+        </div>       
+    </template>
+    <script>
+        // Vue.component('abc',{
+        //     template:'#myVue',
+        // });
+        let vue1 = new Vue({
+        el: '#app1',
+        // 这里就是MVVM中的Model
+        data: {
+        },
+        // 专门用于存储监听事件回调函数
+        methods: {
+        },
+        // 专门用于定义计算属性的
+        computed: {
+        }
+        });
+        let vue2 = new Vue({
+        el: '#app2',
+        // 这里就是MVVM中的Model
+        data: {
+        },
+        // 专门用于存储监听事件回调函数
+        methods: {
+        },
+        // 专门用于定义计算属性的
+        computed: {
+        },
+        components: {
+            'father':{
+                'template':'#father',
+                data:function(){
+                    return {
+                        name:'chen',
+                        age:20,
+                    }
+                },
+                methods:{
+                    say:function(){
+                        alert('aaa');
+                    }
+                },
+                components:{
+                    'son':{
+                        'template':'#son',
+                        // props:['parentname','parentage'],
+                        methods:{
+                            sonFn:function(){
+                                this.$emit('parentsay');
+                            },
+    
+                        }
+                    },
+
+                }
+            }
+        }
+
+        });
+    </script>
+</body>
+
+</html>
