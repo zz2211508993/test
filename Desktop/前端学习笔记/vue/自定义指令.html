@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="js/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <p v-color="curColor">我是段落</p>
+        <!-- <input type="text" v-focus> -->
+    </div>
+    <script>
+        // Vue.directive('color', {
+        //     bind: function (el, obj) {
+        //         el.style.color = obj.value;
+        //     }
+        // })
+
+        Vue.directive('color', {
+            // bind(el, obj) {
+            //     console.log(obj)
+            //     el.style.color = obj.value
+            // },
+            inserted(el, obj) {
+                console.log(obj)
+                el.style.color = obj.value
+            }
+        })
+
+        // Vue.directive('focus',{
+        //     inserted:function(el){
+        //         el.focus();
+        //         console.log('aaa');
+        //     }
+        // })
+        let vm = new Vue({
+            el: '#app',
+            data: {
+                curColor: 'skyblue',
+            },
+            methods: {}
+        });
+    </script>
+</body>
+
+</html>

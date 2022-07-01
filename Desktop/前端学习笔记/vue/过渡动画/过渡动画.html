@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="js/vue.js"></script>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .box{
+            width: 200px;
+            height: 200px;
+            background-color: red;
+        }
+        .one-enter{
+            opacity: 0;
+        }
+        .one-enter-to{
+            margin-left: 500px;
+        }
+        .one-enter-active{
+            transition: all 3s;
+        }
+        .two-enter{
+            opacity: 0;
+        }
+        .two-enter-to{
+            margin-top: 500px;
+        }
+        .two-enter-active{
+            transition: all 3s;
+        }
+        .v-leave{
+            opacity: 1;
+        }
+        .v-leave-to{
+            opacity: 0;
+        }
+        .v-leave-active{
+            transition: all 3s;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 
+        过渡动画
+        要通过transition 标签
+        transition组件中的元素的显示指令会自动查找 v-enter v-enter-to v-enter-active的类名
+        transition组件中的元素的隐藏指令会自动查找 v-leave v-leave-to v-leave-active的类名
+        如果需要初始就执行过渡动画需要加上
+        appear
+        如果有多个元素需要执行过渡动画
+        在transition中添加name 属性 xx
+        然后就在enter前缀加上xx即可 去掉v把xx添加到enter前缀
+     -->
+    <div id="app">
+        <input type="button" @click='toggle' value='按钮'>
+        <transition name='one' appear>
+            <div class='box' v-show="isShow"></div>
+         </transition>
+         <transition name='two'>
+            <div class='box' v-show="isShow"></div>
+         </transition>
+    </div>
+    <script>
+        let vm = new Vue({
+            el: '#app',
+            data: {
+                isShow:true,
+            },
+            methods: {
+                toggle:function(){
+                    this.isShow=!this.isShow;
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

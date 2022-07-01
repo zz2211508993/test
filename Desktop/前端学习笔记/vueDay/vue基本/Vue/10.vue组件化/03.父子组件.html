@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<!--
+  1.一个组件在另一个组件中注册，那个组件就是子组件，另一个组件就是父组件
+-->
+<div id="app">
+  <father></father>
+</div>
+<script src="../js/vue.js"></script>
+<script>
+  const son = Vue.extend({
+    template:
+        `
+          <div>
+              <p>我是p标签</p>
+              <h2>我是h2标签</h2>
+          </div>
+        `
+  })
+  const father=Vue.extend({
+    template:
+        `
+         <div>
+              <p>我是p标签</p>
+              <h2>我是h2标签</h2>
+              <son></son>
+          </div>
+        `,
+    components:{
+      son:son
+    }
+
+  })
+  //root 根组件
+  let vm=new Vue({
+    el:'#app',
+    data:{
+      message:'123',
+    },
+    components:{
+        father:father,
+        son:son,
+    }
+  })
+</script>
+</body>
+</html>

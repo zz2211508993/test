@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<div id="app">
+  <select name="fruit" v-model="fruit">
+    <option value="苹果">苹果</option>
+    <option value="香蕉">香蕉</option>
+    <option value="榴莲">榴莲</option>
+    <option value="葡萄">葡萄</option>
+    <option value="草莓">草莓</option>
+  </select>
+  <h2>你选择的是:{{fruit}}</h2>
+<!--  select中的multiple属性可以选择多个选项-->
+    <select name="fruits" v-model="fruits" multiple>
+      <option value="苹果">苹果</option>
+      <option value="香蕉">香蕉</option>
+      <option value="榴莲">榴莲</option>
+      <option value="葡萄">葡萄</option>
+      <option value="草莓">草莓</option>
+    </select>
+    <h2>你选择的是:{{fruits}}</h2>
+
+</div>
+<script src="../js/vue.js"></script>
+<script>
+  let vm=new Vue({
+    el:'#app',
+    data:{
+      message:'123',
+      fruit:'榴莲',
+      fruits:['榴莲'],
+
+    },
+  })
+</script>
+
+</body>
+</html>

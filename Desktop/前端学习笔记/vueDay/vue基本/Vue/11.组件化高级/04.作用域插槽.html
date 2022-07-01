@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<!--
+  要接收子组件中插槽的值 需要在父组件中定义一个template标签，在template标签写上slot-scope='xxx' 用于接收
+  子组件要传递过去的值，需要写上:xxx='需要传递过去的数据'
+  join 以什么分割数组 - 就是-分割数组
+-->
+<div id="app">
+  <cpn></cpn>
+  <cpn>
+    <template slot-scope="slot">
+<!--        <span v-for="item in slot.data">{{item}}-</span>-->
+
+      <span>{{slot.data.join('----')}}</span>
+    </template>
+  </cpn>
+  <cpn>
+    <template slot-scope="slot">
+      <span>{{slot.data.join('*')}}</span>
+    </template>
+  </cpn>
+  <cpn></cpn>
+</div>
+<template id="cpn">
+  <div>
+    <slot :data="pLanguages">
+      <ul>
+        <li v-for="item in pLanguages">{{item}}</li>
+      </ul>
+    </slot>
+  </div>
+</template>
+<script src="../js/vue.js"></script>
+<script>
+  let vm=new Vue({
+    el:'#app',
+    data(){
+      return {
+
+      }
+    },
+    components:{
+      'cpn':{
+        template:'#cpn',
+        data(){
+          return {
+            pLanguages:['Javascript','Java','C++','C#','Go']
+          }
+        }
+      }
+    }
+  })
+</script>
+</body>
+</html>

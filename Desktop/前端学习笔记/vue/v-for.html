@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="js/vue.js"></script>
+</head>
+
+<body>
+    <!-- v-for 可以遍历数组 字符 对象 数字 -->
+    <div id="app">
+        <ul>
+            <!-- <li v-for="(value,index) in 'arr'">{{index}}---{{value}}</li> -->
+            <!-- <li v-for="(value,index) in 'abcdefg'">{{index}}---{{value}}</li> -->
+            <li v-for="(value,index) in 6">{{index}}---{{value}}</li>
+            <!-- <li v-for="(value,index) in obj">{{index}}---{{value}}</li> -->
+            
+
+        </ul>
+    </div>
+    <script>
+        let vm = new Vue({
+            el: '#app',
+            data: {
+                // arr:['张三','李四','王五','李六'],
+                obj:{
+                    name:'chen',
+                    age:'18',
+                }
+            },
+            methods: {}
+        });
+    </script>
+</body>
+
+</html>

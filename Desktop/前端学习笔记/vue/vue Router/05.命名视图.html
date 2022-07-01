@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="js/vue.js"></script>
+    <script src='js/vue-router.js'></script>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .onepage, .twopage{
+            width: 500px;
+            height: 500px;
+        }
+        .onepage{
+            background: pink;
+        }
+        .twopage{
+            background: skyblue;
+        }
+        .router-link-active{
+            background-color: pink; 
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <!-- 
+            1.什么是router-link
+            虽然可以通过a的href来设置哈希值 但是不推荐
+            推荐使用 router-link 的to属性来指定哈希值
+            2.router-link的特点
+            默认情况下Vue 在渲染router-link的时候，是通过a标签来渲染的
+            如果想设置成其他的标签，可以使用tag
+            3.给router-link设置选中的样式
+            可以通过router-link-active 来设置样式
+            还可以设置自定义选中的类名 linkActiveClass:'自定义样式名'
+            4.重定向路由
+            { path: '被重定向值', redirect: '/重定向之后的值' },
+         -->
+        <router-view name='names1'></router-view>
+        <router-view name='names2'></router-view>
+    </div>
+    <template id='one'>
+        <div class='onepage'>
+            <p>第一个网页</p>
+        </div>
+    </template>
+    <template id='two'>
+        <div class='twopage'>
+            <p>第二个网页</p>
+        </div>
+    </template>
+    <script>
+        // 1.定义组件
+        const one={
+            template: "#one",
+        }
+        const two={
+            template: "#two"
+        }
+        // 2定义切换的规则(定义路由的规则)
+        const routes = [
+            {
+                path: '/',
+                components:{
+                    names1:one,
+                    names2:two,
+                }
+             },
+        ]
+        // 3.根据自定义的规则创建路由对象
+        const router = new VueRouter({
+            routes:routes,
+            linkActiveClass:'nj-active',
+        })
+        let vm = new Vue({
+            el: '#app',
+            // 4.将创建好的路由对象绑定到Vue实例上
+            router:router,
+            data: {},
+            methods: {},
+            components: {
+                one: one, //相当于 template:'#one';
+                two: two //相当于 template:'#two';
+            }
+        });
+    </script>
+</body>
+
+</html>

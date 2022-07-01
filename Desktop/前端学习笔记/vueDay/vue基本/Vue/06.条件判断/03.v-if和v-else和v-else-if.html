@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <span v-if="score>=90">优秀</span>
+    <span v-else-if="score>=80">良好</span>
+    <span v-else-if="score>=60">及格</span>
+    <span v-else>不及格</span>
+</div>
+<script src="../js/vue.js"></script>
+<script>
+  let vm=new Vue({
+    el:'#app',
+    data:{
+      message:'123',
+      isShow:false,
+      score:88,
+    },
+  })
+</script>
+
+</body>
+</html>

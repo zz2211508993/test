@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<!--
+    props中可以使用驼峰标识
+    插值也可以
+    v-bind 不可以使用驼峰标识,需要在驼峰标识前面加上- cMessage 转换为 c-message
+
+
+-->
+<div id="app">
+  <my-cpn :c-message="message"  :c-movies="movies"></my-cpn>
+</div>
+<template id="mycpn">
+  <div>
+    <p>{{cMessage}}</p>
+    <p>{{cMovies}}</p>
+  </div>
+</template>
+<script src="../js/vue.js"></script>
+<script>
+  let vm=new Vue({
+    el:'#app',
+    data(){
+      return{
+        message:'123',
+        movies:['海王','海尔兄弟','阿甘正传','午夜凶铃']
+      }
+    },
+    components:{
+      'my-cpn':{
+        template:'#mycpn',
+        props:{
+          cMessage:{
+            type:String,
+          },
+          cMovies:{
+            type:Array,
+            default(){
+              return []
+            },
+            required:true
+          }
+        },
+      }
+    }
+  })
+</script>
+
+</body>
+</html>

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+            // resolve 执行成功 reject 执行失败的
+            // let p = new Promise((resolve,reject)=>{
+            //     var a=1+1;
+            //     if(a==2){
+            //         resolve('resolve');
+            //     }else{
+            //         reject('reject')
+            //     }
+
+            // })
+            // p.then(function(msg){
+            //     console.log(msg);
+            // })
+            // p.catch(function(msg){
+            //     console.log(msg);
+            // })
+            // const userLeft=false;
+            // const userWatchingcatmeme=false;
+            // function watchTutorialCallback(callback,errorCallback){
+            //     if(userLeft){
+            //         errorCallback({
+            //             name:'userLeft',
+            //             msg:'('
+            //         })
+            //     }else if(userWatchingcatmeme){
+            //         errorCallback({
+            //             name:'User Watching Cat Meme',
+            //             message:'WebDevSimplifed < Cat'
+            //         })
+            //     }else{
+            //         callback('Thumbs up and Subscribe');
+            //     }
+            // }
+            // watchTutorialCallback((message)=>{
+            //     console.log('Success'+message);
+            // },(error)=>{
+            //     console.log(error.name + ' ' + error.message);
+            // })
+            // const userLeft=false;
+            // const userWatchingcatmeme=true;
+            // function watchTutorialPromise(){
+            //     return new Promise((resolve,reject)=>{
+            //         if(userLeft){
+            //             reject({
+            //                 name:'userLeft',
+            //                 message:':('
+            //             })
+            //         }else if(userWatchingcatmeme){
+            //             reject({
+            //                 name:'User Watching Cat Meme',
+            //                 message:'WebDevSimplifed < Cat'
+            //             })
+            //         }else{
+            //             resolve('Thumbs up and Subscribe');
+            //         }
+            //     })
+            // }
+            // watchTutorialPromise().then((message)=>{
+            //     console.log('Success'+msg);
+            // }).catch((error)=>{
+            //     console.log(error.name + ' ' + error.message);
+            //     console.log(error)
+            // })
+                
+            const recordViceOne=new Promise((resolve,reject)=>{
+                resolve('recordViceOne');
+            })
+            const recordViceTwo=new Promise((resolve,reject)=>{
+                resolve('recordViceTwo')
+
+            })
+            const recordViceThree=new Promise((resolve,reject)=>{
+                resolve('recordViceThree');
+
+            })
+            const recordViceFour=new Promise((resolve,reject)=>{
+                resolve('recordViceThree');
+            })
+            // Promise.all 会等所有都执行完毕之后再返回
+            // Promise.race 只要第一个执行完毕之后就返回
+            Promise.all([
+                recordViceOne,
+                recordViceTwo,
+                recordViceThree,
+                recordViceFour,
+            ]).then((message)=>{
+                console.log(message[3]);
+            })
+
+
+    </script>
+    
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="js/vue.js"></script>
+</head>
+
+<body>
+    <div id="app1">
+        <p>{{name}}</p>
+    </div>
+    <div id="app2">
+        <p>{{timeDate | forMateDate}}</p>
+    </div>
+    <script>
+        /* 
+            
+        */
+        // Vue.filter('msg', function (value) {
+        //     value=value.replace(/学院/g,"大学");
+        //     return value;
+        // })
+        // Vue.filter('msg1', function (value) {
+        //     value=value.replace(/大学/g,"幼儿园");
+        //     return value;
+        Vue.filter('forMateDate', function (date) {
+            let year=date.getFullYear()+"";
+            let month=date.getMonth() + 1 +"";
+            let day=date.getDate()+"";
+            let hour=date.getHours()+"";
+            let minute=date.getMinutes()+"";
+            let second=date.getSeconds()+"";
+            let res=`${year.padStart(2,"0")}/${month.padStart(2,"0")}/${day.padStart(2,"0")} ${hour.padStart(2,"0")}:${minute.padStart(2,"0")}:${second.padStart(2,"0")}`;
+            return res;
+        })
+        let vm1 = new Vue({
+            el: '#app1',
+            data: {
+                name:'a学院 b学院 c学院 d学院',
+            },
+            methods: {},
+            
+        });
+        let vm2 = new Vue({
+            el: '#app2',
+            data: {
+                timeDate:new Date(),
+            },
+            methods: {},
+            // 专门用于局部过滤器
+            
+        });
+    </script>
+</body>
+
+</html>

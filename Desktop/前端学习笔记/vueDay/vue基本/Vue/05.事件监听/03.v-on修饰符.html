@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<!--
+    1.v-on 设置了事件，默认情况下会冒泡的
+    可以通过修饰符阻止冒泡
+    .stop 阻止冒泡
+    .prevent 阻止默认事件
+    .{keyCode | keyAlias} 指定键值触发 .enter 表示只有回车有效
+    .once 只会执行第一次的事件
+
+
+
+-->
+<div id="app">
+  <div @click="divClick">
+    aaa
+    <button @click.stop="buttonClick">按钮</button>
+  </div>
+  <br>
+  <form action="01.v-on基本使用.html">
+    <input type="submit" @click.prevent="submitClick">
+  </form>
+  <input type="text" @keyup.enter="keyUp">
+  <button @click.once="onceClick"></button>
+</div>
+<script src="../js/vue.js"></script>
+<script>
+  let vm=new Vue({
+    el:'#app',
+    data:{
+      message:'123',
+    },
+    methods:{
+      divClick(){
+        console.log('divClick');
+      },
+      buttonClick(){
+        console.log('buttonClick');
+      },
+      submitClick(){
+        console.log('submitClick');
+      },
+      onceClick(){
+        console.log('onceClick');
+      },
+      keyUp(){
+        console.log('keyUp')
+      }
+    }
+
+  })
+</script>
+
+</body>
+</html>

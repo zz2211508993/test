@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="js/vue.js"></script>
+</head>
+    <!-- 
+        两种组件渲染的方式
+        1.通过标签渲染，<one></one>,不会覆盖Vue实例控制区域
+        2.通过render渲染，会覆盖Vue实例控制区域
+        render:function(createElement){
+                var html=createElement('one');
+                return html;
+            },
+        
+        
+
+     -->
+<body>
+    <div id="app">
+        <p>123</p>
+    </div>
+    <template id='one'>
+        <div>
+            <p>123</p>
+        </div>
+    </template>
+    <script>
+        let a=()=>console.log('aaa');
+        console.log(a);
+        let vm = new Vue({
+            el: '#app',
+            data: {},
+            render:(c)=>{
+                console.log('aa');
+            },
+                
+            methods: {
+
+            },
+            components:{
+                'one':{
+                    'template':'#one',
+                }  
+            }
+        });
+    </script>
+</body>
+
+</html>

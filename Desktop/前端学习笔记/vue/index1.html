@@ -1,0 +1,74 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="js/vue.js"></script>
+    <style>
+        table {
+            margin: 0 auto;
+            background-color: black;
+            width: 1000px;
+        }
+        tr {
+            background-color: white;
+        }
+    </style>
+</head>
+
+<body>
+    
+    <div id="app">
+        <table>
+            <tr>
+                <th>序号</th>
+                <th>姓名</th>
+                <th>分数</th>
+                <th>时间</th>
+                <th>操作</th>
+            </tr>
+            <tr v-for="item in array">
+                <td>{{ item.name }}</td>
+                <td>{{ item.number }}</td>
+                <td>{{ item.result }}</td>
+                <td>{{ item.time }}</td>
+            </tr>
+        </table>
+    </div>
+    <script>
+        let app = new Vue({
+            el: "#app",
+            data: {
+                aaa:"aaaa",
+                array: [{
+                    name: 'zs',
+                    number: 1,
+                    result: 90,
+                    time:new Date()
+                }, {
+                    name: 'zs',
+                    number: 1,
+                    result: 90,
+                    time:new Date()
+                }, {
+                    name: 'zs',
+                    number: 1,
+                    result: 90,
+                    time:new Date()
+                }, {
+                    name: 'zs',
+                    number: 1,
+                    result: 90,
+                    time:new Date()
+                }]
+            }
+        })
+    </script>
+</body>
+
+</html>
+

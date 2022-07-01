@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="js/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <p>{{age}}</p>
+    </div>
+    <script>
+        let vm = new Vue({
+            beforeUpdate:function(){
+               /* 
+                beforeUpdate 
+                数据更新完成，界面还没同步
+                数据没有发生改变不会调用beforeUpdate
+               */
+              console.log(this.age);
+              console.log(document.querySelector('p').innerHTML)
+              console.log(document.querySelector('p').innerText)
+
+            },
+            updated:function(){
+                /* 
+                    update 数据更新完成，界面也同步了
+                    数据和界面都同步完成之后就会调用updated
+
+                    
+                */
+                console.log('aaa');
+            },
+            
+            el: '#app',
+            data: {
+                age:18,
+            },
+            methods: {
+                say:function(){
+                    console.log('aaa');
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

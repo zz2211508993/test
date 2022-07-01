@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .a{
+            width: 300px;
+            height: 300px;
+            background: red;
+        }
+        .b{
+            width: 200px;
+            height: 200px;
+            background: pink;
+        }
+        .c{
+            width: 100px;
+            height: 100px;
+            background: deeppink;
+        }
+    </style>
+    <script src="js/vue.js"></script>
+</head>
+<!-- 
+    v-on
+    
+ -->
+<body>
+    <div id="app">
+         <!-- 
+            事件修饰符 
+            once 只执行一次事件
+            prevent 阻止默认事件跳转
+            stop 阻止冒泡
+            self 只有当前的事件触发了，才会触发回调函数
+            capture 事件捕获 父元素设置
+        -->
+        
+        <!-- <button v-on:click='myFn'>按钮</button> -->
+
+        <!-- <button @click.once='myFn'>按钮</button> -->
+        <!-- <a href="http://www.baidu.com" v-on:click.prevent='myFn'>123</a> -->
+        <!-- <div class="a" v-on:click.capture='myFn1'>
+            <div class="b" v-on:click='myFn2'>
+                <div class="c" v-on:click='myFn3'></div>
+            </div>
+        </div> -->
+        <!-- 
+            按键修饰符
+            输入指定键盘按键触发的
+            .enter
+            .tab
+            .delete (捕获“删除”和“退格”键)
+            .esc
+            .space
+            .up
+            .down
+            .left
+            .right
+         -->
+         <input type='text' @keyup.f2='myFn("lnj","22")'>
+    </div>
+    <script>
+        // 自定义按键名称
+        Vue.config.keyCodes.f2 = 113
+        let vm = new Vue({
+            el: '#app',
+            data: {
+                name:'chen',
+                age:18,
+
+            },
+            methods: {
+                myFn:function(){
+                    console.log(this.name,this.age);
+                },
+                myFn1:function(){
+                    console.log('aaa');
+                },
+                myFn2:function(){
+                    console.log('bbb');
+                },
+                myFn3:function(){
+                    console.log('cc');
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

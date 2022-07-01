@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style>
+
+  </style>
+</head>
+<body>
+<!--
+  v-bind-style写法
+  1.对象写法
+      <h2 :style="{fontSize:'60px',color:'100px'}">www</h2>
+      绑定数据写法
+      <h2 :style={fontSize:finalSize,color:finalColor}>www</h2>
+  2.数组写法
+  <h2 :style=[obj,obj1]>www</h2>
+
+
+-->
+<div id="app">
+<!--    <h2 :style="{fontSize:'60px',color:'100px'}">www</h2>-->
+<!--    <h2 :style={fontSize:finalSize,color:finalColor}>www</h2>-->
+    <h2 :style=[obj,obj1]>www</h2>
+</div>
+<script src="../js/vue.js"></script>
+<script>
+  let vm=new Vue({
+    el:'#app',
+    data:{
+      message:'123',
+      finalColor:'red',
+      finalSize:'60px',
+      obj:{
+        fontSize:'50px',
+      },
+      obj1:{
+        color:'red',
+      }
+    },
+  })
+</script>
+</body>
+</html>

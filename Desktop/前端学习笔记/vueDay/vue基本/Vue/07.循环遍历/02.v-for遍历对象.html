@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<!--
+    1.v-for遍历数组的第一种方式，只带属性值
+    <li v-for="value in obj">{{value}}</li>
+    2.v-for遍历数组的第二种方式，带属性值和属性名
+    <li v-for="(value,key) in obj">{{key}}={{value}}</li>
+    3.v-for遍历数组的第二种方式，带属性值和属性名和索引
+    <li v-for="(value,key,index) in obj">{{index}}.{{key}}={{value}}</li>
+
+-->
+<body>
+<div id="app">
+  <ul>
+    <!--    <li v-for="value in obj">{{value}}</li>-->
+    <!--    <li v-for="(value,key) in obj">{{key}}={{value}}</li>-->
+    <li v-for="(value,key,index) in obj">{{index}}.{{key}}={{value}}</li>
+  </ul>
+</div>
+<script src="../js/vue.js"></script>
+<script>
+  let vm=new Vue({
+    el:'#app',
+    data:{
+      message:'123',
+      obj:{
+        name:'陈',
+        age:18
+      }
+    },
+  })
+</script>
+
+</body>
+</html>

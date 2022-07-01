@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <ul>
+        <li v-for="item in cartoon">
+            {{item}}
+        </li>
+    </ul>
+</div>
+<script src="./js/vue.js"></script>
+<script>
+    let vm=new Vue({
+        el:'#app',
+        data(){
+            return {
+                cartoon:['1','2','3']
+            }
+        },
+        methods:{
+
+        }
+    })
+</script>
+</body>
+</html>

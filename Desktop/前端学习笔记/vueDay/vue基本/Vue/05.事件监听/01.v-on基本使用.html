@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<div id="app">
+  <h2>{{count}}</h2>
+  <button @click="count++">增加</button>
+  <button @click="count--">减少</button>
+</div>
+<script src="../js/vue.js"></script>
+<script>
+  let vm=new Vue({
+    el:'#app',
+    data:{
+      message:'123',
+      count:0,
+    },
+    methods:{
+      add(){
+        this.count++;
+      },
+      sub(){
+        this.count--;
+      }
+    }
+  })
+</script>
+
+</body>
+</html>

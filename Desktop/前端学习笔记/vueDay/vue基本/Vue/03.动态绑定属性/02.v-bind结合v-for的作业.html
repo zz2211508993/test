@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style>
+    .active{
+      color:red;
+    }
+  </style>
+</head>
+<body>
+<div id="app">
+  <ul ref="father">
+    <li v-for="(item,index) in cartoon" :class={'active':false}>
+      {{item}}---{{index}}
+    </li>
+  </ul>
+</div>
+<script src="../js/vue.js"></script>
+<script>
+  let vm=new Vue({
+    el:'#app',
+    data:{
+      message:'123',
+      cartoon:['海王','海尔兄弟','海贼王','龙珠'],
+    },
+    methods:{
+    },
+    mounted(){
+      let Items=this.$refs.father.children;
+      let preIndex=0;
+      for(let i=0;i<Items.length;i++){
+        let Item=Items[i];
+        Item.onclick=function (){
+          let preItem=Items[preIndex];
+          preItem.className='';
+          this.className='active';
+          preIndex=i;
+        }
+      }
+    }
+
+  })
+</script>
+
+</body>
+</html>

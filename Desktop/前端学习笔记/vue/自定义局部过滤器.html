@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="js/vue.js"></script>
+</head>
+
+<body>
+    <div id="app1">
+        <p>{{name}}</p>
+    </div>
+    <div id="app2">
+        <p>{{name |formatStr}}</p>
+    </div>
+    <script>
+        /* 
+            
+        */
+        // Vue.filter('msg', function (value) {
+        //     value=value.replace(/学院/g,"大学");
+        //     return value;
+        // })
+        // Vue.filter('msg1', function (value) {
+        //     value=value.replace(/大学/g,"幼儿园");
+        //     return value;
+        
+        let vm1 = new Vue({
+            el: '#app1',
+            data: {
+                name:'a学院 b学院 c学院 d学院',
+            },
+            methods: {},
+            
+        });
+        let vm2 = new Vue({
+            el: '#app2',
+            data: {
+                name:'a学院 b学院 c学院 d学院',
+            },
+            methods: {},
+            // 专门用于局部过滤器
+            filters:{
+                "formatStr":function(value){
+                    value=value.replace(/学院/g,"大学");
+                    return value;
+                }
+            }
+            
+        });
+    </script>
+</body>
+
+</html>

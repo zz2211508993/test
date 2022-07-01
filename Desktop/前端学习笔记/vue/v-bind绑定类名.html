@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="js/vue.js"></script>
+    <style>
+        .bgc{
+            background-color: red;
+        }
+        .size{
+            font-size: 70px;
+        }
+        .color{
+            color: pink;
+        }
+    </style>
+    
+</head>
+
+<body>
+    <div id="app">
+        <!-- 
+            可以设置多个类名
+            注意点:如果绑定不加[]会去Model中查找
+            如果绑定了[]没有在[]中加引号也会去Model中的数组查找 绑定了才会在style中查找
+            通过v-bind 绑定可以
+            格式:
+            :class="['类名','类名','类名']""
+            注意点:通过v-bind 绑定类名还可以设置三目运算符或者对象代替
+            
+
+         -->
+        <!-- <p :class="['bgc','size','color']">我是段落</p> -->
+        <!-- <p :class="['bgc','size',flag ? 'color' : '']">我是段落</p> -->
+        <p :class="obj">我是段落</p>
+    </div>
+    <script>
+        let vm = new Vue({
+            el: '#app',
+            data: {
+                flag:false,
+                obj:{
+                    'color':true,
+                    'size':true,
+                    'bgc':true,
+                }
+            },
+            methods: {}
+        });
+    </script>
+</body>
+
+</html>

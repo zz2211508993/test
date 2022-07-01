@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="js/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <button @click="toggle">切换</button>
+        <!--通过v-if来切换, 会直接删除和重新创建-->
+        <one v-if="isShow"></one>
+    </div>
+    <template id='one'>
+        <div><p>121212</p></div>
+    </template>
+    <script>
+        let vm = new Vue({
+            el:'#app',       
+            data: {
+                isShow:true,
+            },
+            methods: {
+                toggle:function(){
+                    this.isShow=!this.isShow;
+                }
+            },
+            components:{
+                'one':{
+                    'template':'#one',
+                    data:function(){
+                    return {
+                        name:'cccc'
+                     }
+                    },
+                    beforeDestroy:function(){
+                        console.log('aaa');
+                    },
+                    destroyed:function(){
+                        console.log('aaa');
+                    }
+                },
+                
+            }
+        });
+    </script>
+</body>
+
+</html>

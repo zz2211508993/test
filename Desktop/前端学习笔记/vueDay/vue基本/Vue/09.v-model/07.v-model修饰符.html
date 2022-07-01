@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<!--
+    v-model默认情况下中绑定的数据是字符串的
+    v-model 修饰符
+    lazy 只有失去焦点或者输入回车键，文本框中的内容才会发生变化
+    number 会将任意类型转换为number类型
+    trim 去除两端多余的空格
+
+
+
+
+-->
+<div id="app">
+<!--  <input type="text" v-model.lazy="message">-->
+  <input type="text" v-model.trim="message">
+  <h2>{{typeof message}}</h2>
+</div>
+<script src="../js/vue.js"></script>
+<script>
+  let vm=new Vue({
+    el:'#app',
+    data:{
+      message:'',
+
+    },
+  })
+</script>
+
+
+</body>
+</html>

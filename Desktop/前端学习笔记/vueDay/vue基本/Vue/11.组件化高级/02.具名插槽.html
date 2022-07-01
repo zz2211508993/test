@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<!--
+    具名插槽
+    slot设置了name属性
+    设置了name属性不会被默认的替换
+    要替换具名的插槽，可以在cpn中的插槽设置一个slot=''属性
+    设置之后会将指定的名字的插槽替换
+    <cpn><button slot="center">返回</button></cpn>
+    也就是slot中的name为center中的插槽替换为
+    <button slot="center">返回</button>
+
+
+-->
+<div id="app">
+  <cpn><span>标题</span></cpn>
+  <cpn><button slot="center">返回</button></cpn>
+</div>
+<template id="cpn">
+  <div>
+    <slot name="left">左边</slot>
+    <slot name="center">中间</slot>
+    <slot name="right">右边</slot>
+    <slot>1111</slot>
+  </div>
+</template>
+<script src="../js/vue.js"></script>
+<script>
+  let vm=new Vue({
+    el:'#app',
+    data:{
+    },
+    components:{
+      'cpn':{
+        template:'#cpn'
+      }
+    }
+  })
+</script>
+
+</body>
+</html>
